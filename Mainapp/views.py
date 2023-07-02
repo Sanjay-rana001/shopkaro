@@ -535,7 +535,7 @@ def place_order(request):
 @login_required(login_url="/loginpage/")    
 def paymentSuccess(request,rppid,rpoid,rpsid):
         buyer = Buyer.objects.get(username = request.user)
-        check = Checkout.objects.filter(user=buyer)
+        check = Checkout.objects.filter(buyer=buyer)
         check = check[::-1]
         check = check[0]
         check.rppid= rppid
