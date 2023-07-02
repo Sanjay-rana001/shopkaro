@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block title %}
+<title>Shopkaro  | Products</title>
+{% endblock %}
+
+{% block body %}
+             <div class="wrapper1 wrapper2 mt-10 mb-10 container  ">
+                 <!-- <span class="icon-close1"><ion-icon name="close"></ion-icon>  </span> -->
+                 <div class="form_box  m-auto login1 mt-5 mb-5 ">
+                     <h2 class="text-center mb-3"  ><span class="text-danger " >L</span>ogin</h2>
+                     <form action="/loginpage/" method="post">
+                        {% csrf_token %}
+                        {% for m in messages %}
+                              <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert">
+                               <strong>{{m}}</strong> 
+                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                               </button>
+                             </div>
+                        {% endfor %}
+                         <div class="row">
+                               <div class="input-box1 col-md-12">
+                                   <label>User_Name</label>
+                                   <span class="icon"><ion-icon name="person"></ion-icon></span>
+                                   <input type="text" name="username" id="log" class="form-control" required>
+                               </div>
+                               <div class="input-box1 col-md-12">
+                                   <label>Password</label>
+                                   <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                                   <input type="password" name="password" id="password" class="form-control" required>
+                               </div>
+                         </div>
+                         <div class="remember-forgot1 d-flex justify-content-between">
+                             <label class="d-flex"> <input type="checkbox" class="mb-2 ">Remember me</label>
+                             <a href="/forgetPassword1/" class="ml-5">Forgot Password?</a>
+                         </div>
+                         <button type="submit" class="bton">Login</button>
+                         <div class="login-register1">
+                             <p class="text-center">Don't have an account <a href="/registerpage/" class="register_link1">Regsiter here</a> </p>
+                         </div>
+                     </form>
+             
+                 </div>
+              </div>
+
+  {% endblock %}        
+     
+                 

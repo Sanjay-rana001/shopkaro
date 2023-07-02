@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+{% block title %}
+<title>Shopkaro  | Products</title>
+{% endblock %}
+{% block body%}
+<div class="wrapper1 container pr-5 pl-5 pt-3 mb-10  w-100  ">
+    <div class="form_box register1 m-auto  ">
+        <h2 class="text-center mt-3 p-3 " style="background: #ef8c8c;"><span class="text-success">Update</span> Your Details </h2>
+        <form action="/update_profile/" method="post" enctype="multipart/form-data" >
+           {% csrf_token %}
+           {% for m in messages %}
+           <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+           {% endfor %}
+            <div class="row">
+                <div class="input-box1 col-md-6 ">
+                    <label class="mr-2">Full Name</label>
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="Fname" id="log1" value="{{data.name}}">
+                </div>
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2"> Upload your image</label>
+                    <span class="icon"><ion-icon name="image"></ion-icon></span>
+                    <input type="file" name="pic" value="">
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Email</label>
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email"  name="usermail" value="{{data.email}}">
+                </div>
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Phone</label>
+                    <span class="icon"><ion-icon name="call"></ion-icon></span>
+                    <input type="tel" name="phone" value="{{data.phone}}">
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">City</label>
+                    <span class="icon"><ion-icon name="location"></ion-icon></span>
+                    <input type="text"  name="city" value="{{data.city}}">
+                </div>
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">State</label>
+                    <span class="icon"><ion-icon name="location"></ion-icon></span>
+                    <input type="text" name="state" value="{{data.state}}">
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Pincode</label>
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <input type="text"  name="pincode" value="{{data.pin}}">
+                </div>
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Adress line 1</label>
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <input type="text" name="adress1" value="{{data.addressline1}}">
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Adress line 2</label>
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <input type="text"  name="adress2" value="{{data.addressline2}}">
+                </div>
+                <div class="input-box1 col-md-6">
+                    <label class="mr-2">Adress line 3</label>
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <input type="text"  name="adress3" value="{{data.addressline3}}">
+                </div>
+            </div>
+       
+            <button type="submit" class="bton">Register</button>
+            <div class="login-register1">
+                <p class="text-center">Already  have an account <a href="/loginpage/" class="login_link1    ">Login here</a> </p>
+            </div>
+        </form>
+    
+    </div>
+   
+</div>
+{% endblock %}

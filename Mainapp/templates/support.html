@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+{% block title %}
+<title>Shopkaro | Products</title>
+{% endblock %}
+{% block body %}
+<div class="container-fluid ">
+    <div class="row px-xl-5">
+        <div class="col-md-6">
+            <div class="support-form">
+                <h1>Need <span class="text-danger">Help!!</span> </h1>
+                
+                <form method="post" action="/supportForm/">
+                    <div id="success">
+                        {% for m in messages %}
+                        <div class="alert  alert-primary alert-dismissible fade show text-center"  role="alert">
+                            <strong>{{m}}</strong> 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        {% endfor %}
+                    </div>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="mb-1 col-md-7">
+                            <label for="username"  class="form-label">Username:</label>
+                            <input type="text"  name="username" class="form-control" value="{{request.user.username}}" required>
+                        </div>
+                        <div class="mb-1 col-md-5">
+                            <label for="phone"  class="form-label">Phone:</label>
+                            <input type="text" name="phone" class="form-control"  required>
+                        </div>
+                    </div>
+
+                    <div class="mb-1 ">
+                        <label for="email"  class="form-label">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label for="subject"  class="form-label">Subject:</label>
+                        <input type="text" name="subject" class="form-control" required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="message"  class="form-label">Message:</label>
+                        <textarea name="message" class="form-control" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 ">Submit </button>
+
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-6 p-2 ">
+
+            <div class="mapp p-2 ">
+                <div class="mapouter bg-light p-3 mb-4   ">
+                    <div class="gmap_canvas rounded-3"><iframe width="600" height="500" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=D/1023%20dabua%20colony%20faridabad&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+                </div>
+
+                <div class="bg-light p-3 mb-3">
+                    <p class="mb-2"><i class="fa fa-map-marker text-primary mr-3"></i>D-1023 NIT Faridabad</p>
+                    <p class="mb-2"><a href="mailto:sanjay00002023@gmail.com"><i
+                                class="fa fa-envelope text-success mr-3"></i>sanjayrana00002023@gmail.com</a></p>
+                    <p class="mb-2"><a href="tel:8700808018"><i class="fa fa-phone text-dark mr-3"></i>+91
+                            8700808018</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

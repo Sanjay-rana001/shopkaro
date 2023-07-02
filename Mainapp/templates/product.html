@@ -1,0 +1,251 @@
+{% extends "index.html" %}
+{% block title %}
+<title>Shopkaro  | Products</title>
+{% endblock %}
+
+{% block body %}
+<!-- inner page section -->
+<section class="product_section layout_padding p-0">
+    <div class="container">
+       <div class="heading_container heading_center">
+          <h3>
+             Our <span>products</span>
+          </h3>
+       </div>
+</section>
+<!-- end inner page section -->
+
+
+
+<!-- Product section  Start -->
+<div class="container-fluid">
+    <div class="row px-xl-3">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-4 col-sm-6 p-3">
+            <!-- Price Start -->
+            <h5 class="section-title position-relative text-uppercase mb-3 red">
+                <span
+                    class="bg-light pr-3">Filter</span>by price</h5>
+            <div class="bg-light p-3 mb-2">
+                <form action="/price-filter/{{mc}}/{{sc}}/{{br}}/" method="post">
+                    {% csrf_token %}
+                    <div class="custom-control  custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="1" name="price" checked id="price-all">
+                        <label class="custom-control-label" for="price-all">All Price</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="2" name="price" id="price-1">
+                        <label class="custom-control-label" for="price-1">under - &#8377;1000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="3" name="price" id="price-2">
+                        <label class="custom-control-label" for="price-2">&#8377;1000 - &#8377;2000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="4" name="price" id="price-3">
+                        <label class="custom-control-label" for="price-3">&#8377;2000 - &#8377;3000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="5" name="price" id="price-4">
+                        <label class="custom-control-label" for="price-4">&#8377;3000 - &#8377;4000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="6" name="price" id="price-5">
+                        <label class="custom-control-label" for="price-5">&#8377;4000 - &#8377;5000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="radio" class="custom-control-input" value="7" name="price" id="price-6">
+                        <label class="custom-control-label" for="price-6">More than - &#8377;5000</label>
+                    </div>
+                    <div class="my-3">
+                        <button type="submit" class="btn btn-sm bg-success text-light w-70 px-5">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Price End -->
+
+            <!-- Color Start -->
+            <h5 class="section-title position-relative text-uppercase mb-3  red"><span
+                    class="bg-light pr-3">Filter</span>by color</h5>
+            <div class="bg-light p-4 mb-3">
+                <form action="/color-filter/{{mc}}/{{sc}}/{{br}}/" method="post">
+                    {% csrf_token %}
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input"  value="1" name="color" checked id="color-all">
+                        <label class="custom-control-label" for="color-all">All Color</label>
+                    </div>
+                    
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="3" name="color" id="color-3">
+                        <label class="custom-control-label" for="color-3">White</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="4" name="color" id="color-4">
+                        <label class="custom-control-label" for="color-4">Red</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" value="5" name="color" id="color-5">
+                        <label class="custom-control-label" for="color-5">Blue</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="radio" class="custom-control-input" value="6" name="color" id="color-6">
+                        <label class="custom-control-label" for="color-6">Green</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between my-3">
+                        <input type="radio" class="custom-control-input" value="7" name="color" id="color-7">
+                        <label class="custom-control-label" for="color-7">Yellow</label>
+                    </div>
+                    <div class="my-3">
+                        <button type="submit" class="btn btn-sm bg-success text-light   w-70 px-5">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+            <h5 class="section-title position-relative text-uppercase mb-3 red"><span
+                class="bg-light pr-3">Filter</span> by category</h5>
+                <div class="bg-light p-4 mb-3">
+                    {% for item in product %}
+        <div class="col-md-12">
+            <a class="text-decoration-none" href="/product/All/{{item.subcategory}}/All/">
+                <div class="cat-item d-flex align-items-center mb-4">
+                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                        <img class="img-fluid" src="{{item.pic1.url}}" alt="">
+                    </div>
+                    <div class="flex-fill pl-3 col-md-6">
+                <h6>{{item.subcategory}}</h6>
+                        
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+                </div>
+
+            <!-- Color End -->
+
+            
+        </div>
+        <!-- Shop Sidebar End -->
+
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-8 ">
+            <section class="product_section layout_padding pb-0">
+                <div class="row pb-1">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            <div>
+                                <div class="ml-2">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
+                                            data-toggle="dropdown">Maincategory</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/product/All/{{sc}}/{{br}}/">All</a>
+                                            {% for item in maincategory %}
+                                            <a class="dropdown-item"
+                                                href="/product/{{item.name}}/{{sc}}/{{br}}/">{{item.name}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="btn-group ml-2 p-2">
+                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
+                                            data-toggle="dropdown">Subcategory</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/product/{{mc}}/All/{{br}}/">ALL</a>
+                                            {% for item in subcategory %}
+                                            <a class="dropdown-item"
+                                                href="/product/{{mc}}/{{item.name}}/{{br}}/">{{item.name}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="btn-group ml-2 p-2">
+                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
+                                            data-toggle="dropdown">Brands</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="/product/{{mc}}/{{sc}}/All/">ALL</a>
+                                            {% for item in brands %}
+                                            <a class="dropdown-item"
+                                                href="/product/{{mc}}/{{sc}}/{{item.name}}/">{{item.name}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group ml-2 p-2">
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="/filter/{{mc}}/{{sc}}/{{br}}/Latest/">Latest</a>
+                                   
+                                    <a class="dropdown-item" href="/filter/{{mc}}/{{sc}}/{{br}}/LtoH/">Price:Low to High</a>
+                                    <a class="dropdown-item" href="/filter/{{mc}}/{{sc}}/{{br}}/HtoL/">Price:High to Low</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    {% for item in data %}
+                    <div class="col-sm-6 col-md-6 col-lg-4  p-3 mb-2">
+                        <div class="box p-0">
+                            <div class="option_container">
+                                <div class="options">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="/addTocart/{{item.id}}/"><i
+                                                class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="/addTowishlist/{{item.id}}/"><i
+                                                class="far fa-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square"
+                                            href="/product_detail/{{item.id}}/"><i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="img-box ">
+                                <img src="{{item.pic1.url}}" height="200px" alt="" class="img-fluid ">
+                            </div>
+
+                        </div>
+                        <div class="box mt-0 p-0 ">
+                            <a href="/product_detail/{{item.id}}/">
+                                <div class="detail-box">
+                                    <h5>
+                                        {{item.id}} -  {{item.name}}  <br> {{item.brands}} - {{item.subcategory}}
+                                    </h5>
+                                    <h6>
+                                        <p class="d-inline"> <span> &#8377;</span>  {{item.final_price}} </p> <del
+                                            class="text-danger"> <span> &#8377;</span> {{item.base_price}}</del> <p class="pl-3 " id="small-f"> <sup
+                                            class="ml-2 sup1">{{item.discount}}% off</sup></p>
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        <section class="product_section lauout_padding mt-0  mb-5">
+            <div class="btn-box">
+                <a href="/product/All/All/All">
+                    View All products
+                </a>
+            </div>
+            <!-- <div class="col-12">
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+            </div> -->
+        </section>
+    </div>
+    <!-- Shop Product End -->
+
+</div>
+</div>
+<!-- Shop End -->
+{% endblock %}

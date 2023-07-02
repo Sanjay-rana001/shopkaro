@@ -1,0 +1,225 @@
+{% extends "index.html" %}
+{% block titile %}
+Shop | Detail
+{% endblock titile %}
+{% block body %}
+
+<div class="container-fluid mt-5 pb-5">
+  <div class="row px-xl-5">
+
+
+    <div class="col-lg-7 h-auto mb-3">
+      <div class="h-100  p-3 pt-4 mt-5">
+        <h3>{{data.name}} {{data.subcategory}}</h3>
+        <div class="d-flex mb-3">
+          <div class="text-primary mr-2">
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star"></small>
+            <small class="fas fa-star-half-alt"></small>
+            <small class="far fa-star"></small>
+          </div>
+          <small class="pt-1">(99 Reviews)</small>
+        </div>
+        <h3 class="font-weight-semi-bold mb-4 h3">
+          <p class="d-inline "> <span> &#8377;</span> {{data.final_price}} </p> <del class="text-danger">
+            <span> &#8377;</span> {{data.base_price}}</del> <sup class="sup2">{{data.discount}}%
+            off</sup>
+        </h3>
+        <h4 class="mb-3">{{data.maincategory}} | {{data.subcategory}} | {{data.brands}}</h4>
+
+        <p class="mb-4 " id="p-big"> Wearing this great {{data.subcategory}}  from {{data.brands}} is all about feeling confident and
+          comfortable. You want a piece that enhances your personal style and complements your existing wardrobe. </p>
+        <div class="d-flex mb-3">
+          <strong class="text-dark mr-3">Sizes:</strong>
+          <h5>{{data.size}}</h5>
+        </div>
+
+        <div class="d-flex align-items-center mb-4 pt-2">
+          <div class="input-group quantity mr-3" style="width: 130px;">
+            <div class="input-group-btn">
+              <button class="btn btn-primary btn-minus">
+                <i class="fa fa-minus"></i>
+              </button>
+            </div>
+            <input type="text" class="form-control bg-body-secondary border-0 text-center" value="1">
+            <div class="input-group-btn">
+              <button class="btn btn-primary btn-plus">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <a href="/addTocart/{{data.id}}/">
+            <button class="btn btn-warning btn2 mx-2 px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+              Cart</button>
+          </a>
+        
+          <a href="/addTowishlist/{{data.id}}/">
+            <button class="btn btn-success px-3"><i class="fa fa-heart mr-1"></i> Add To
+              Wishlist</button>
+          </a>
+        </div>
+        <div class="d-flex pt-2">
+          <strong class="text-dark mr-2">Share on:</strong>
+          <div class="d-inline-flex share_icon  ">
+            <a class="text-dark px-2 hover2" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="text-dark px-2 hover2" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="text-dark px-2 hover2" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="text-dark px-2 hover2" href="">
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-5 mb-3 mt-5">
+      <div id="product-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner ">
+          <div class="carousel-item mt-3 mb-3 active ">
+            <a href="{{data.pic1.url}}"><img class="w-100" src="{{data.pic1.url}}" alt="Image"></a>
+          </div>
+          <div class="carousel-item mt-3 mb-3">
+            <a href="{{data.pic2.url}}"><img class="w-100 " src="{{data.pic2.url}}" alt="Image"></a>
+          </div>
+          <div class="carousel-item mt-3 mb-3">
+            <a href="{{data.pic3.url}}"><img class="w-100 " src="{{data.pic3.url}}" alt="Image"></a>
+          </div>
+
+        </div>
+        <a class="carousel-control-prev " href="#product-carousel" data-slide="prev">
+          <i class="fa fa-2x fa-angle-left text-dark"></i>
+        </a>
+        <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+          <i class="fa fa-2x fa-angle-right text-dark"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row px-xl-5">
+    <div class="col">
+      <div class=" p-3">
+        <div class="nav nav-tabs mb-4">
+
+          <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3" checked>Reviews (0)</a>
+        </div>
+
+        <div class="tab-pane fade" id="tab-pane-3">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="mb-4">1 review for "Product Name"</h4>
+              <div class="media mb-4">
+                <img src="{{data.pic3.url}}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                <div class="media-body">
+                  <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
+                  <div class="text-primary mb-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam
+                    tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="mb-4">Leave a review</h4>
+              <small>Your email address will not be published. Required fields are marked *</small>
+              <div class="d-flex my-3">
+                <p class="mb-0 mr-2">Your Rating * :</p>
+                <div class="text-primary">
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <form>
+                <div class="form-group">
+                  <label for="message">Your Review *</label>
+                  <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="name">Your Name *</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Your Email *</label>
+                  <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group mb-0">
+                  <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- product detail end -->
+<!-- Products Start -->
+<section class="product_section layout_padding">
+  <div class="container-fluid">
+    <div class="heading_container heading_center">
+      <h2>
+        Product you <span>may</span> also like
+      </h2>
+    </div>
+    <div class="row">
+      {% for item in product %}
+      <div class="  col-xl-3 col-sm-12 col-md-6 col-lg-4  ">
+        <div class="box ">
+          <div class="option_container">
+            <div class="options">
+              <div class="product-action">
+                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                <a class="btn btn-outline-dark btn-square" href="/product_detail/{{item.id}}/"><i
+                    class="fa fa-arrow-right"></i></a>
+
+              </div>
+            </div>
+          </div>
+          <div class="img-box">
+            <img src="{{item.pic1.url}}" alt="">
+          </div>
+
+        </div>
+        <div class="box mt-0 p-0 ">
+          <a href="/product_detail/{{item.id}}/">
+            <div class="detail-box">
+              <h5>
+                {{item.name}} -{{item.subcategory}}
+              </h5>
+              <h6>
+                <p class="d-inline"> <span> &#8377;</span> {{item.final_price}} </p> <del class="text-danger"> <span>
+                    &#8377;</span> {{item.base_price}}</del> <sup class="ml-2 sup1">{{item.discount}}% off</sup>
+              </h6>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box">
+      <a href="/product/All/All/All/">
+        View All products
+      </a>
+    </div>
+  </div>
+</section>
+<!-- Products End -->
+
+{% endblock body %}
