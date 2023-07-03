@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_q2^1(#$v2-n+-=qdf4q6#k_ow76$#c$-7#kyh*ujea9cnw6%k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -140,7 +140,7 @@ EMAIL_HOST_PASSWORD = "npbcdnijbolspief" #password associated with above email-i
 
 
 
-
+STATIC_ROOT = "/home/SanjayDjango/shopkaro/static/"
 
 RAZORPAY_API_KEY=  "rzp_test_kGGsEkkHFAwaXx"
 RAZORPAY_API_SECRET_KEY = "sgrDIYBGcUHRfkPDPEV5rM88"

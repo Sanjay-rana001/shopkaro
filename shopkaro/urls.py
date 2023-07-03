@@ -18,6 +18,7 @@ urlpatterns = [
     path('addTocart/<int:num>/', mainapp.addTocart),
     path('addTowishlist/<int:num>/', mainapp.addTowishlist),
     path('removeFromcart/<str:num>/', mainapp.removeFromcart),
+     path('update-cart/<str:num>/<str:op>/',mainapp.updateCartPage),
     path('removeFromwishlist/<str:num>/', mainapp.removeFromwishlist), 
     path('profile/', mainapp.profilepage),
     path('update_profile/', mainapp.update_profilepage),

@@ -430,6 +430,39 @@ def removeFromcart(request,num):
 
 
 
+def updateCartPage(Request,num,op):
+    cart = Request.session.get("cart",None)
+    if(cart and num in cart):
+        item = cart[num]
+        if(item['Qty']==1 and op=="Dec"):
+            return HttpResponseRedirect("/cart/")
+        elif(op=="Dec"):
+            item['Qty'] = item['Qty']-1
+            item['total'] = item['total']-item['price']
+        else:
+            item['Qty'] = item['Qty']+1
+            item['total'] = item['total']+item['price']
+        Request.session['cart']=cart
+        subtotal = 0
+        count = 0
+        for key,values in cart.items():
+            subtotal = subtotal+values['total']
+            count = count + values['Qty']
+        if(subtotal>0 and subtotal<1000):
+            shipping = 150
+        else:
+            shipping =  0
+        total = subtotal + shipping
+        Request.session['cart']=cart        
+        Request.session['subtotal']=subtotal        
+        Request.session['shipping']=shipping        
+        Request.session['total']=total        
+        Request.session['count']=count
+        Request.session.set_expiry(60*60*24*30)
+    return HttpResponseRedirect("/cart/")
+
+
+
 @login_required(login_url="/loginpage/")
 def addTowishlist(request,num):
     try:
@@ -520,6 +553,8 @@ def place_order(request):
             paymentOrder = client.order.create(dict(amount=orderAmount,currency=orderCurrency,payment_capture=1))
             paymentId=paymentOrder["id"]
             check.paymentMode = 2
+            check.paymentStatus=2
+
             check.save()      
             return render(request,"pay.html",{
                 "amount":orderAmount,
