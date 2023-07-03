@@ -8,7 +8,7 @@ from random import randint
 from django.conf import settings
 from django.core.mail import send_mail
 from shopkaro.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
-import razorpay
+import razorpay 
 
 
 
