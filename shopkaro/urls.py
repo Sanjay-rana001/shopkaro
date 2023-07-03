@@ -32,8 +32,8 @@ urlpatterns = [
     path('search/', mainapp.searchpage),
     path('checkout/', mainapp.checkoutpage),
     path('place-order/', mainapp.place_order), 
-    path('paymentSuccess/<str:rppid>/<str:rpoid>/<str:rpsid>/', mainapp.paymentSuccess),
-    path('re-payment/<str:checkid>/', mainapp.payAgain),
+    path('paymentSuccess/<str:rppid>/<str:rpoid>/<str:rpsid>/<int:checkid>/', mainapp.paymentSuccess),
+    path('re-payment/<int:checkid>/', mainapp.payAgain),
     path('confirmation/', mainapp.confirmationpage),
     path('filter/<str:mc>/<str:sc>/<str:br>/<str:filter>/', mainapp.filterpage),
     path('product_detail/<int:num>/', mainapp.product_deatail)
