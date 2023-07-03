@@ -31,7 +31,7 @@ urlpatterns = [
     path('testimonial/', mainapp.testimonialpage),
     path('search/', mainapp.searchpage),
     path('checkout/', mainapp.checkoutpage),
-    path('place-order/', mainapp.place_order),
+    path('place-order/', mainapp.place_order), 
     path('paymentSuccess/<str:rppid>/<str:rpoid>/<str:rpsid>/', mainapp.paymentSuccess),
     path('re-payment/<str:checkid>/', mainapp.payAgain),
     path('confirmation/', mainapp.confirmationpage),

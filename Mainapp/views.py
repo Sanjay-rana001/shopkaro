@@ -525,7 +525,8 @@ def place_order(request):
                 "amount":orderAmount,
                 "api_key":RAZORPAY_API_KEY,
                 "order_id":paymentId,
-                "User":buyer
+                "User":buyer,
+                "checkid":9999999999
             })    
     else:
         return HttpResponseRedirect("/checkout/")
@@ -533,14 +534,17 @@ def place_order(request):
 
 
 @login_required(login_url="/loginpage/")    
-def paymentSuccess(request,rppid,rpoid,rpsid):
+def paymentSuccess(request,rppid,rpoid,rpsid,checkid):
         buyer = Buyer.objects.get(username = request.user)
-        check = Checkout.objects.filter(buyer=buyer)
-        check = check[::-1]
-        check = check[0]
-        check.rppid= rppid
-        check.paymentStatus=2 
-        check.save()
+        if(checkid==9999999999):
+            check = Checkout.objects.filter(buyer=buyer)
+            check=check[::-1]
+            check=check[0]
+        else:
+            check = Checkout.objects.get(id=checkid)
+            check.rppid=rppid
+            check.paymentStatus=2
+            check.save()
 
         subject = 'Order has been placed : Team Shopkaro'
         message = f"""Hi {buyer.name}, Your order  has been placed with order id {rppid}
@@ -568,7 +572,8 @@ def payAgain(request,checkid):
            "amount":orderAmount,
            "api_key":RAZORPAY_API_KEY,
            "order_id":paymentId,
-           "User":buyer
+           "User":buyer,
+           "checkid":checkid
                })    
     except:
         return HttpResponseRedirect("profile")
